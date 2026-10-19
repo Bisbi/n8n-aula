@@ -11,8 +11,10 @@
   },
   // n8n 2.x richiede Node 24. Versione fissata: uguale per tutta la classe.
   "postCreateCommand": "npm install -g n8n@2.43.8",
-  // Riparte da solo ogni volta che il Codespace si accende.
+  // Riparte da solo quando il Codespace si accende e quando apri l'editor
+  // (lo script non fa niente se n8n è già acceso).
   "postStartCommand": "bash .devcontainer/start-n8n.sh",
+  "postAttachCommand": "bash .devcontainer/start-n8n.sh",
   "forwardPorts": [5678],
   "portsAttributes": {
     "5678": {

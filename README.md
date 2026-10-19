@@ -77,7 +77,7 @@ GitHub Codespaces è gratis fino a circa **60 ore al mese** (macchina base) e
 Apri il **Terminale** del Codespace (menu ☰ → Terminal → New Terminal):
 
 ```bash
-tail -f /tmp/n8n.log                      # cosa sta facendo n8n (Ctrl+C per uscire)
+tail -f /workspaces/n8n.log               # cosa sta facendo n8n (Ctrl+C per uscire)
 bash .devcontainer/start-n8n.sh restart   # riavvia n8n
 ```
 
