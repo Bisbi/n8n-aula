@@ -101,6 +101,10 @@ bash .devcontainer/start-n8n.sh restart   # riavvia n8n
   `N8N_EDITOR_BASE_URL` e `WEBHOOK_URL` sull'indirizzo del Codespace, e usa
   `N8N_PUSH_BACKEND=sse` per evitare l'errore "Origin header does NOT match"
   del WebSocket dietro il proxy di Codespaces.
+- **Diagnosi da remoto:** il container ha un server SSH, quindi dal tuo PC
+  `gh codespace ssh -c <nome>` apre un terminale nel Codespace (serve il
+  permesso `codespace` di gh: `gh auth refresh -h github.com -s codespace`).
+  Log di n8n: `/workspaces/n8n.log`.
 - **Dati:** in `/workspaces/.n8n`, fuori dalla cartella del repository,
   quindi non finiscono mai in un commit e sopravvivono al "Rebuild".
 - **Licenza:** n8n self-hosted è sotto *Sustainable Use License*: uso interno
