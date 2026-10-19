@@ -1,0 +1,4 @@
+# Dati di n8n se avviato fuori da Codespaces: contengono credenziali
+.n8n/
+node_modules/
+.env

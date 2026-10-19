@@ -1,0 +1,47 @@
+{
+  "name": "01 - Ciao webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ciao",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5b0d6f0e-1c1a-4a59-9a1e-0c7e4a1d0001",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "5b0d6f0e-1c1a-4a59-9a1e-0c7e4a1d00aa"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { messaggio: 'Ciao ' + ($json.query.nome || 'mondo') + '!', ora: $now.setZone('Europe/Rome').toFormat('HH:mm') } }}",
+        "options": {}
+      },
+      "id": "5b0d6f0e-1c1a-4a59-9a1e-0c7e4a1d0002",
+      "name": "Rispondi",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [240, 0]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Rispondi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

@@ -1,0 +1,2 @@
+# Gli script girano su Linux: sempre fine riga LF, anche se modificati da Windows.
+*.sh text eol=lf

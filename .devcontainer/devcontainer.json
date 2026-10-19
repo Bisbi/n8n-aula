@@ -1,0 +1,27 @@
+{
+  "name": "n8n per l'aula",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  },
+  // n8n 2.x richiede Node 24. Versione fissata: uguale per tutta la classe.
+  "postCreateCommand": "npm install -g n8n@2.43.8",
+  // Riparte da solo ogni volta che il Codespace si accende.
+  "postStartCommand": "bash .devcontainer/start-n8n.sh",
+  "forwardPorts": [5678],
+  "portsAttributes": {
+    "5678": {
+      "label": "n8n",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "containerEnv": {
+    "TZ": "Europe/Rome"
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  }
+}
