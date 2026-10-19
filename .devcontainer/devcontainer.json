@@ -1,6 +1,10 @@
 {
   "name": "n8n per l'aula",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  // SSH serve solo per "gh codespace ssh" (diagnosi dal terminale del docente).
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {}
+  },
   "hostRequirements": {
     "cpus": 2,
     "memory": "4gb"
