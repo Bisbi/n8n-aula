@@ -73,9 +73,19 @@ case "${1:-start}" in
     ;;
 esac
 
-if is_running; then
+# Il lock resta in mano a n8n finché è acceso: evita due avvii in parallelo
+# (postStartCommand e postAttachCommand partono quasi insieme).
+exec 9>"$DATA/n8n.lock"
+if ! flock -w 10 9; then
   echo "n8n è già acceso. Log: tail -f $LOG"
   exit 0
+fi
+
+# "run": n8n in primo piano, per gli hook del devcontainer che lo mettono in
+# background loro (vedi devcontainer.json).
+if [ "${1:-}" = "run" ]; then
+  echo $$ >"$PIDFILE"
+  exec n8n start >>"$LOG" 2>&1 </dev/null
 fi
 
 setsid nohup n8n start >>"$LOG" 2>&1 </dev/null &

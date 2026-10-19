@@ -13,8 +13,10 @@
   "postCreateCommand": "npm install -g n8n@2.43.8",
   // Riparte da solo quando il Codespace si accende e quando apri l'editor
   // (lo script non fa niente se n8n è già acceso).
-  "postStartCommand": "bash .devcontainer/start-n8n.sh",
-  "postAttachCommand": "bash .devcontainer/start-n8n.sh",
+  // nohup bash -c '… &' è il modo indicato da VS Code per lasciare un processo
+  // acceso dopo la fine del comando.
+  "postStartCommand": "nohup bash -c 'bash .devcontainer/start-n8n.sh run &' >/dev/null 2>&1",
+  "postAttachCommand": "nohup bash -c 'bash .devcontainer/start-n8n.sh run &' >/dev/null 2>&1",
   "forwardPorts": [5678],
   "portsAttributes": {
     "5678": {
